@@ -55,13 +55,13 @@ const Header = () => {
   ];
 
   return (
-    <header className="px-6 py-3 border-b border-[--border-color] flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[--background-default] px-6 py-3 border-b border-[--border-color] flex items-center justify-between">
       <aside className="flex items-center gap-6">
         <h1 className="text-xl font-bold">
           Cooud <span className="text-sky-400">TV</span>
         </h1>
         <div className="bg-[--border-color] h-6 w-[1px]" />
-        <nav className="text-sm">
+        <nav className="text-sm hidden lg:flex">
           <ul className="flex items-center text-sm text-[--text-gray] w-full mr-8">
             {links.map(({ href, label, icon, iconActive }) => (
               <motion.li
