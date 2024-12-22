@@ -127,7 +127,7 @@ export default function Home() {
                             </h1>
                           </div>
                           <AnimatedButton
-                            className="mt-4 flex items-center gap-2 text-[--text-primary] hover:text-[--text-primary]"
+                            className="mt-4 px-2 flex items-center gap-2 text-[--text-primary] hover:text-[--text-primary]"
                             variant="outline"
                           >
                             <PiPlayCircleFill /> Watch Now
