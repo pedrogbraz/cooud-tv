@@ -85,14 +85,32 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[--background-default] px-6 py-3 border-b border-[--border-color] flex items-center justify-between">
+    <header
+      className={`px-6 py-3 flex items-center justify-between ${
+        pathname === "/discover"
+          ? "fixed top-0 w-full z-50 bg-[#0206173D]"
+          : "sticky top-0 z-50 bg-[--background-default] border-b border-[--border-color]"
+      }`}
+    >
       <aside className="flex items-center gap-6">
-        <h1 className="text-xl font-bold">
+        <h1
+          className={`text-xl font-bold ${
+            pathname === "/discover" ? "text-[#EAEEF4]" : "text-[--text-black]"
+          }`}
+        >
           Cooud <span className="text-sky-400">TV</span>
         </h1>
-        <div className="bg-[--border-color] h-6 w-[1px]" />
+        <div
+          className={`${
+            pathname === "/discover" ? "bg-[#FFFFFF29]" : "bg-[--border-color]"
+          } h-6 w-[1px]`}
+        />
         <nav className="text-sm hidden lg:flex">
-          <ul className="flex items-center text-sm text-[--text-gray] w-full mr-8">
+          <ul
+            className={`flex items-center text-sm w-full mr-8 ${
+              pathname === "/discover" ? "text-[#EAEEF4]" : "text-[--text-gray]"
+            }`}
+          >
             {links.map(({ href, label, icon, iconActive }) => (
               <motion.li
                 key={href}
@@ -105,8 +123,16 @@ const Header = () => {
                   className={clsx(
                     "flex items-center p-2 rounded-md duration-300 text-nowrap w-full",
                     pathname === href
-                      ? "text-[--text-black]"
-                      : "hover:text-gray-500 dark:hover:text-gray-400"
+                      ? `${
+                          pathname === "/discover"
+                            ? "text-[#EAEEF4]"
+                            : "text-[--text-black]"
+                        }`
+                      : `${
+                          pathname === "/discover"
+                            ? "hover:text-[#FFFFFF]"
+                            : "hover:text-gray-500 dark:hover:text-gray-400"
+                        }`
                   )}
                 >
                   <span className="mr-1">
@@ -121,9 +147,13 @@ const Header = () => {
       </aside>
       <aside className="flex items-center">
         <ModeToggle />
-        <div className="bg-[--border-color] h-6 w-[1px] ml-5" />
+        <div
+          className={`${
+            pathname === "/discover" ? "bg-[#FFFFFF29]" : "bg-[--border-color]"
+          } h-6 w-[1px] ml-5`}
+        />
         <Select>
-          <SelectTrigger className="border-none w-[80px]">
+          <SelectTrigger className={`border-none w-[80px] ${pathname === "/discover" ? "text-[#EAEEF4]" : "text-[--text-black]"}`}>
             <SelectValue placeholder="ENG" />
           </SelectTrigger>
           <SelectContent>
@@ -132,7 +162,11 @@ const Header = () => {
             <SelectItem value="span">SPAN</SelectItem>
           </SelectContent>
         </Select>
-        <div className="bg-[--border-color] h-6 w-[1px] mr-5" />
+        <div
+          className={`${
+            pathname === "/discover" ? "bg-[#FFFFFF29]" : "bg-[--border-color]"
+          }`}
+        />
         <div className="flex items-center gap-5">
           <Popover>
             <PopoverTrigger>
@@ -175,9 +209,7 @@ const Header = () => {
                             : "hover:text-gray-500 dark:hover:text-gray-400"
                         )}
                       >
-                        <span className="mr-1">
-                          {icon}
-                        </span>
+                        <span className="mr-1">{icon}</span>
                         {label}
                       </Link>
                     </motion.li>

@@ -64,7 +64,7 @@ export default function Home() {
             fill
             className="rounded-xl object-cover"
           />
-          <div className="absolute lg:inset-0 rounded-lg bg-gradient-to-r from-black/80 via-black/40 to-black/30"></div>
+          <div className="absolute lg:inset-0 rounded-lg bg-gradient-to-r from-black/80 via-black/40 to-black/30" />
           <div className="absolute bottom-6 left-6 lg:max-w-[45%]">
             <span className="text-xs text-[#94A3B8]">Recently Watched</span>
             <h1 className="mt-3 text-white text-lg xl:text-xl font-medium">
