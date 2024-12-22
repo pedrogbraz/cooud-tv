@@ -14,8 +14,6 @@ import {
   PiGear,
   PiGearFill,
   PiUser,
-  PiUserFill,
-  PiQuestionFill,
   PiQuestion,
   PiSignOut,
 } from "react-icons/pi";
@@ -78,13 +76,11 @@ const Header = () => {
       href: "/my-account",
       label: "My Account",
       icon: <PiUser className="text-sm" />,
-      iconActive: <PiUserFill className="text-sm" />,
     },
     {
       href: "/help-center",
       label: "Help Center",
       icon: <PiQuestion className="text-sm" />,
-      iconActive: <PiQuestionFill className="text-sm" />,
     },
   ];
 
@@ -136,74 +132,76 @@ const Header = () => {
             <SelectItem value="span">SPAN</SelectItem>
           </SelectContent>
         </Select>
-        <div className="bg-[--border-color] h-6 w-[1px]  mr-5" />
-        <Popover>
-          <PopoverTrigger>
-            <Avatar className="size-9">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </PopoverTrigger>
-          <PopoverContent className="mr-6 p-0">
-            <section className="flex flex-col items-center justify-center p-6 bg-[--background-container-traffic] rounded-xl border-b border-[--border-color]">
-              <Avatar className="size-16">
+        <div className="bg-[--border-color] h-6 w-[1px] mr-5" />
+        <div className="flex items-center gap-5">
+          <Popover>
+            <PopoverTrigger>
+              <Avatar className="size-9">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <h1 className="mt-3 font-medium text-lg leading-3">
-                Pedro Gontijo Braz
-              </h1>
-              <span className="mt-1 text-sm text-[--text-zinc]">
-                pedrobrazdevs@gmail.com
-              </span>
-              <AnimatedButton className="mt-3" variant="blueLinks">
-                Upgrade
-              </AnimatedButton>
-            </section>
-            <section>
-              <ul className="flex flex-col text-sm text-[--text-gray] w-full mr-8 p-3">
-                {linksProfile.map(({ href, label, icon, iconActive }) => (
-                  <motion.li
-                    key={href}
+            </PopoverTrigger>
+            <PopoverContent className="mr-6 p-0">
+              <section className="flex flex-col items-center justify-center p-6 bg-[--background-container-traffic] rounded-xl border-b border-[--border-color]">
+                <Avatar className="size-16">
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <h1 className="mt-3 font-medium text-lg leading-3">
+                  Pedro Gontijo Braz
+                </h1>
+                <span className="mt-1 text-sm text-[--text-zinc]">
+                  pedrobrazdevs@gmail.com
+                </span>
+                <AnimatedButton className="mt-3" variant="blueLinks">
+                  Upgrade
+                </AnimatedButton>
+              </section>
+              <section>
+                <ul className="flex flex-col text-sm text-[--text-gray] w-full mr-8 p-3">
+                  {linksProfile.map(({ href, label, icon }) => (
+                    <motion.li
+                      key={href}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Link
+                        href={href}
+                        aria-label={`Navigate to ${label}`}
+                        className={clsx(
+                          "flex items-center p-2 rounded-md duration-300 text-nowrap w-full",
+                          pathname === href
+                            ? "text-[--text-black]"
+                            : "hover:text-gray-500 dark:hover:text-gray-400"
+                        )}
+                      >
+                        <span className="mr-1">
+                          {icon}
+                        </span>
+                        {label}
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
+                <footer className="border-t border-[--border-color] px-3 py-2">
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link
-                      href={href}
-                      aria-label={`Navigate to ${label}`}
-                      className={clsx(
-                        "flex items-center p-2 rounded-md duration-300 text-nowrap w-full",
-                        pathname === href
-                          ? "text-[--text-black]"
-                          : "hover:text-gray-500 dark:hover:text-gray-400"
-                      )}
+                      href="#"
+                      className="flex items-center p-2 rounded-md duration-300 text-nowrap w-full"
                     >
-                      <span className="mr-1">
-                        {pathname === href ? iconActive : icon}
-                      </span>
-                      {label}
+                      <p className="flex items-center text-sm text-[--text-gray] hover:text-gray-500 dark:hover:text-gray-400">
+                        <PiSignOut className="mr-1" /> Sign Out
+                      </p>
                     </Link>
-                  </motion.li>
-                ))}
-              </ul>
-              <footer className="border-t border-[--border-color] px-3 py-2">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="#"
-                    className="flex items-center p-2 rounded-md duration-300 text-nowrap w-full"
-                  >
-                    <p className="flex items-center text-sm text-[--text-gray] hover:text-gray-500 dark:hover:text-gray-400">
-                    <PiSignOut className="mr-1" /> Sign Out
-                    </p>
-                  </Link>
-                </motion.div>
-              </footer>
-            </section>
-          </PopoverContent>
-        </Popover>
+                  </motion.div>
+                </footer>
+              </section>
+            </PopoverContent>
+          </Popover>
+        </div>
       </aside>
     </header>
   );
