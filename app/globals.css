@@ -2,20 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYBLACKITALIC.OTF") format("opentype");
+  font-weight: 900;
+  font-style: italic;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYBOLD.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYHEAVYITALIC.OTF") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYLIGHTITALIC.OTF") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYTHINITALIC.OTF") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFPRODISPLAYULTRALIGHTITALIC.OTF") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+* {
+  font-family: "SFProDisplay", sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-default);
+}
+
+@layer base {
+  :root {
+    /* Background */
+    --background-default: #fff;
+    --background-sidebar: #f1f5f9;
+    --background-activity: #fff;
+    --background-button-sidebar: #e2e8f0;
+    --background-container-traffic: #fff;
+    --background-link: #00a0d8;
+
+    /* Border */
+    --border-color: #e2e8f0;
+    --separator: #e2e8f0;
+
+    /* Text */
+    --text-black: #020617;
+    --text-gray: #94a3b8;
+    --text-zinc: #475569;
+    --text-primary: #00a0d8;
+
+    --text-breadcrumb: #6b7280;
+    --hover-text-breadcrumb: #a5a5a5;
+
+    /* Icons */
+    --icon-colors: #0048e5;
+
+    /*  Colors  */
+    --color-primary: #0ac0ff;
+
+    /* Overlays */
+    --overlay-bg-blue: #009ed856;
+    --overlay-bg-blue-50: #009ed8a4;
+  }
+  .dark {
+    /* Background */
+    --background-default: #020617;
+    --background-sidebar: #1f2937;
+    --background-button-sidebar: #374151;
+    --background-container-traffic: #0f172a;
+    --background-link: #eb006a;
+
+    /* Border */
+    --border-color: #1f2937;
+    --separator: #1f2937;
+
+    /* Text */
+    --text-black: #f0f0f0;
+    --text-gray: #6b7280;
+    --text-zinc: #94a3b8;
+    --text-primary: #00a0d8;
+
+    --text-breadcrumb: #d1d5db;
+    --hover-text-breadcrumb: #d1d5db60;
+
+    /* Icons */
+    --icon-colors: #0ac0ff;
+
+    /* Overlays */
+    --overlay-bg-blue: #1E40AF;
+    --overlay-bg-blue-50: #1E3A8A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
